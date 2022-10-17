@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class BottomItemImageData extends StatelessWidget {
-  String icon;
+  final String icon;
   final double? width;
 
-  BottomItemImageData(
+  const BottomItemImageData(
       this.icon,
       {
         Key? key,

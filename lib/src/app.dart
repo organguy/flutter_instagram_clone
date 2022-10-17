@@ -15,12 +15,12 @@ class App extends GetView<BottomNavController> {
           appBar: AppBar(),
           body: IndexedStack(
             index: controller.pageIndex.value,
-            children: [
-              Container(child: Center(child: Text('HOME')),),
-              Container(child: Center(child: Text('SEARCH')),),
-              Container(child: Center(child: Text('UPLOAD')),),
-              Container(child: Center(child: Text('ACTIVITY')),),
-              Container(child: Center(child: Text('MYPAGE')),),
+            children: const [
+              Center(child: Text('HOME')),
+              Center(child: Text('SEARCH')),
+              Center(child: Text('UPLOAD')),
+              Center(child: Text('ACTIVITY')),
+              Center(child: Text('MY PAGE')),
             ],
           ),
           bottomNavigationBar: BottomNavigationBar(

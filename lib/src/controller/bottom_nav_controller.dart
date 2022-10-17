@@ -5,7 +5,7 @@ import 'package:instagram_clone/src/components/message_popup.dart';
 import 'package:instagram_clone/src/screens/upload.dart';
 import 'package:flutter/material.dart';
 
-enum PageName{HOME, SEARCH, UPLOAD, ACTIVITY, MYPAGE}
+enum PageName{home, search, upload, activity, myPage}
 
 class BottomNavController extends GetxController{
   RxInt pageIndex = 0.obs;
@@ -15,13 +15,13 @@ class BottomNavController extends GetxController{
     var page = PageName.values[value];
 
     switch(page){
-      case PageName.UPLOAD:
+      case PageName.upload:
         Get.to(() => const Upload());
         break;
-      case PageName.HOME:
-      case PageName.SEARCH:
-      case PageName.ACTIVITY:
-      case PageName.MYPAGE:
+      case PageName.home:
+      case PageName.search:
+      case PageName.activity:
+      case PageName.myPage:
         _changePage(value, hasGesture: hasGesture);
         break;
     }
