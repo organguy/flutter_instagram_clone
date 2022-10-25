@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:instagram_clone/src/components/image_data.dart';
 import 'package:instagram_clone/src/controller/bottom_nav_controller.dart';
+import 'package:instagram_clone/src/screens/active_screen.dart';
 import 'package:instagram_clone/src/screens/home_screen.dart';
+import 'package:instagram_clone/src/screens/my_screen.dart';
 import 'package:instagram_clone/src/screens/search_screen.dart';
 import 'package:instagram_clone/src/utils/image_path.dart';
 
@@ -27,9 +29,9 @@ class App extends GetView<BottomNavController> {
                   );
                 },
               ),
-              const Center(child: Text('UPLOAD')),
-              const Center(child: Text('ACTIVITY')),
-              const Center(child: Text('MY PAGE')),
+              Container(),
+              const ActiveScreen(),
+              const MyScreen(),
             ],
           ),
           bottomNavigationBar: BottomNavigationBar(

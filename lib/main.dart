@@ -1,9 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:instagram_clone/firebase_options.dart';
 import 'package:instagram_clone/src/app.dart';
 import 'package:instagram_clone/src/bindings/init_binding.dart';
+import 'package:instagram_clone/src/root.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -26,7 +31,7 @@ class MyApp extends StatelessWidget {
         )
       ),
       initialBinding: InitBinding(),
-      home: const App()
+      home: const Root()
     );
   }
 }

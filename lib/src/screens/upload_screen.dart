@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:instagram_clone/src/components/image_data.dart';
 import 'package:instagram_clone/src/utils/image_path.dart';
 import 'package:photo_manager/photo_manager.dart';
 
-class Upload extends StatefulWidget {
-  const Upload({Key? key}) : super(key: key);
+class UploadScreen extends StatefulWidget {
+  const UploadScreen({Key? key}) : super(key: key);
 
   @override
-  State<Upload> createState() => _UploadState();
+  State<UploadScreen> createState() => _UploadScreenState();
 }
 
-class _UploadState extends State<Upload> {
+class _UploadScreenState extends State<UploadScreen> {
 
   var albums = <AssetPathEntity>[];
   var imageList = <AssetEntity>[];
@@ -231,7 +232,7 @@ class _UploadState extends State<Upload> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: GestureDetector(
-          onTap: (){},
+          onTap: Get.back,
           child: Padding(
             padding: const EdgeInsets.all(15.0),
             child: ImageData(IconsPath.closeImage),
