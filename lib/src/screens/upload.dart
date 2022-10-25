@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/src/components/image_data.dart';
-import 'package:instagram_clone/src/utils/imagepath.dart';
+import 'package:instagram_clone/src/utils/image_path.dart';
 import 'package:photo_manager/photo_manager.dart';
 
 class Upload extends StatefulWidget {

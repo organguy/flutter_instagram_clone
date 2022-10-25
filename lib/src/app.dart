@@ -4,7 +4,7 @@ import 'package:instagram_clone/src/components/image_data.dart';
 import 'package:instagram_clone/src/controller/bottom_nav_controller.dart';
 import 'package:instagram_clone/src/screens/home_screen.dart';
 import 'package:instagram_clone/src/screens/search_screen.dart';
-import 'package:instagram_clone/src/utils/imagepath.dart';
+import 'package:instagram_clone/src/utils/image_path.dart';
 
 class App extends GetView<BottomNavController> {
   const App({Key? key}) : super(key: key);
@@ -27,9 +27,9 @@ class App extends GetView<BottomNavController> {
                   );
                 },
               ),
-              Center(child: Text('UPLOAD')),
-              Center(child: Text('ACTIVITY')),
-              Center(child: Text('MY PAGE')),
+              const Center(child: Text('UPLOAD')),
+              const Center(child: Text('ACTIVITY')),
+              const Center(child: Text('MY PAGE')),
             ],
           ),
           bottomNavigationBar: BottomNavigationBar(

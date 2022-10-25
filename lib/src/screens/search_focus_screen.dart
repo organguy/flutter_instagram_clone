@@ -1,10 +1,9 @@
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:instagram_clone/src/components/image_data.dart';
 import 'package:instagram_clone/src/controller/bottom_nav_controller.dart';
 
-import '../utils/imagepath.dart';
+import '../utils/image_path.dart';
 
 class SearchFocusScreen extends StatefulWidget{
 

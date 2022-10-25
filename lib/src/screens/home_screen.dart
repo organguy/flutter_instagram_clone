@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:instagram_clone/src/components/avatar_widget.dart';
 import 'package:instagram_clone/src/components/image_data.dart';
 import 'package:instagram_clone/src/components/post_widget.dart';
-import 'package:instagram_clone/src/utils/imagepath.dart';
+import 'package:instagram_clone/src/utils/image_path.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
   Widget _myStory(){
     return Stack(
       children: [
-        AvatarWidget(
+        const AvatarWidget(
           type: AvatarType.TYPE2,
           thumbPath: 'https://pbs.twimg.com/profile_images/1485050791488483328/UNJ05AV8_400x400.jpg',
           size: 70,
@@ -53,7 +53,7 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(width: 20,),
             _myStory(),
             const SizedBox(width: 5,),
-            ...List.generate(100, (index) => AvatarWidget(
+            ...List.generate(100, (index) => const AvatarWidget(
               type: AvatarType.TYPE1,
               thumbPath: 'https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg.jpg',
             )),
@@ -64,7 +64,7 @@ class HomeScreen extends StatelessWidget {
 
   Widget _postList() {
     return Column(
-      children: List.generate(50, (index) => PostWidget()),
+      children: List.generate(50, (index) => const PostWidget()),
     );
   }
 

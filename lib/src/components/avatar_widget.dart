@@ -7,13 +7,13 @@ enum AvatarType{
 
 class AvatarWidget extends StatelessWidget {
 
-  bool? hasStory;
-  String thumbPath;
-  String? nickname;
-  AvatarType type;
-  double? size;
+  final bool? hasStory;
+  final String thumbPath;
+  final String? nickname;
+  final AvatarType type;
+  final double? size;
 
-  AvatarWidget({
+  const AvatarWidget({
     Key? key,
     required this.type,
     required this.thumbPath,

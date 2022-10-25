@@ -3,7 +3,7 @@ import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/src/components/avatar_widget.dart';
 import 'package:instagram_clone/src/components/image_data.dart';
-import 'package:instagram_clone/src/utils/imagepath.dart';
+import 'package:instagram_clone/src/utils/image_path.dart';
 
 class PostWidget extends StatelessWidget {
   const PostWidget({Key? key}) : super(key: key);
@@ -14,7 +14,7 @@ class PostWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          AvatarWidget(
+          const AvatarWidget(
             type: AvatarType.TYPE3,
             nickname: 'organguy',
             size: 40,
@@ -23,7 +23,7 @@ class PostWidget extends StatelessWidget {
           GestureDetector(
             onTap: (){},
             child: Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: ImageData(
                 IconsPath.postMoreIcon,
                 width: 30,
