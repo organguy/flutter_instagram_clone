@@ -3,10 +3,18 @@ import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/src/components/avatar_widget.dart';
 import 'package:instagram_clone/src/components/image_data.dart';
+import 'package:instagram_clone/src/models/post_model.dart';
 import 'package:instagram_clone/src/utils/image_path.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class PostWidget extends StatelessWidget {
-  const PostWidget({Key? key}) : super(key: key);
+
+  final PostModel post;
+
+  const PostWidget({
+    Key? key,
+    required this.post,
+  }) : super(key: key);
 
   Widget _header(){
     return Padding(
@@ -14,11 +22,11 @@ class PostWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const AvatarWidget(
+          AvatarWidget(
             type: AvatarType.TYPE3,
-            nickname: 'organguy',
+            nickname: post.userInfo!.nickname,
             size: 40,
-            thumbPath: 'https://pbs.twimg.com/profile_images/1485050791488483328/UNJ05AV8_400x400.jpg'
+            thumbPath: post.userInfo!.thumbnail!
           ),
           GestureDetector(
             onTap: (){},
@@ -37,7 +45,7 @@ class PostWidget extends StatelessWidget {
 
   Widget _image(){
     return CachedNetworkImage(
-      imageUrl: 'https://images.pexels.com/photos/589840/pexels-photo-589840.jpeg?cs=srgb&dl=pexels-valiphotos-589840.jpg&fm=jpg'
+      imageUrl: post.thumbnail!
     );
   }
 
@@ -80,15 +88,15 @@ class PostWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const Text(
-            '좋아요 150개',
-            style: TextStyle(
+          Text(
+            '좋아요 ${post.likeCount}개',
+            style: const TextStyle(
               fontWeight: FontWeight.bold
             ),
           ),
           ExpandableText(
-            '콘텐츠1입니다.\n콘텐츠1입니다.\n콘텐츠1입니다.\n콘텐츠1입니다.\n콘텐츠1입니다.\n',
-            prefixText: 'organguy',
+            post.description!,
+            prefixText: post.userInfo!.nickname,
             onPrefixTap: (){
               debugPrint('organguy page');
             },
@@ -110,11 +118,11 @@ class PostWidget extends StatelessWidget {
   Widget _replyTextBtn(){
     return GestureDetector(
       onTap: (){},
-      child: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15.0),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
         child: Text(
-          '댓글 199개 모두 보기',
-          style: TextStyle(
+          '댓글 ${post.replyCount}개 모두 보기',
+          style: const TextStyle(
             color: Colors.grey,
             fontSize: 13
           ),
@@ -124,11 +132,11 @@ class PostWidget extends StatelessWidget {
   }
 
   Widget _dateAgo(){
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 15.0),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15.0),
       child: Text(
-        '1일전',
-        style: TextStyle(
+        timeago.format(post.createdAt!),
+        style: const TextStyle(
           color: Colors.grey,
           fontSize: 11
         ),

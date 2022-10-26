@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:instagram_clone/src/components/avatar_widget.dart';
 import 'package:instagram_clone/src/components/image_data.dart';
 import 'package:instagram_clone/src/components/post_widget.dart';
+import 'package:instagram_clone/src/controller/home_controller.dart';
 import 'package:instagram_clone/src/utils/image_path.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends GetView<HomeController> {
   const HomeScreen({Key? key}) : super(key: key);
 
-  Widget _myStory(){
+  Widget _myStory() {
     return Stack(
       children: [
         const AvatarWidget(
@@ -22,20 +24,20 @@ class HomeScreen extends StatelessWidget {
             width: 25,
             height: 25,
             decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.blue,
-              border: Border.all(
-                color: Colors.white,
-                width: 2
-              )
+                shape: BoxShape.circle,
+                color: Colors.blue,
+                border: Border.all(
+                    color: Colors.white,
+                    width: 2
+                )
             ),
             child: const Center(
               child: Text(
                 '+',
                 style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                  height: 1.1
+                    fontSize: 20,
+                    color: Colors.white,
+                    height: 1.1
                 ),
               ),
             ),
@@ -49,23 +51,26 @@ class HomeScreen extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        children: [
+          children: [
             const SizedBox(width: 20,),
             _myStory(),
             const SizedBox(width: 5,),
-            ...List.generate(100, (index) => const AvatarWidget(
+            ...List.generate(100, (index) =>
+            const AvatarWidget(
               type: AvatarType.TYPE1,
               thumbPath: 'https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg.jpg',
             )),
           ]
-        ),
-      );
+      ),
+    );
   }
 
   Widget _postList() {
-    return Column(
-      children: List.generate(50, (index) => const PostWidget()),
-    );
+    return Obx(() {
+      return Column(
+        children: List.generate(controller.posts.length, (index) => PostWidget(post: controller.posts[index])).toList(),
+      );
+    });
   }
 
   @override
@@ -79,7 +84,7 @@ class HomeScreen extends StatelessWidget {
         ),
         actions: [
           GestureDetector(
-            onTap: (){},
+            onTap: () {},
             child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: ImageData(
@@ -98,6 +103,4 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-
-
 }

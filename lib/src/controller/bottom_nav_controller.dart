@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:get/get.dart';
 import 'package:instagram_clone/src/components/message_popup.dart';
+import 'package:instagram_clone/src/controller/upload_controller.dart';
 import 'package:instagram_clone/src/screens/upload_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,9 @@ class BottomNavController extends GetxController{
 
     switch(page){
       case PageName.upload:
-        Get.to(() => const UploadScreen());
+        Get.to(() => const UploadScreen(), binding: BindingsBuilder(() {
+          Get.put(UploadController());
+        }));
         break;
       case PageName.home:
       case PageName.search:

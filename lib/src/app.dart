@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:instagram_clone/src/components/image_data.dart';
+import 'package:instagram_clone/src/controller/auth_controller.dart';
 import 'package:instagram_clone/src/controller/bottom_nav_controller.dart';
 import 'package:instagram_clone/src/screens/active_screen.dart';
 import 'package:instagram_clone/src/screens/home_screen.dart';
@@ -62,12 +64,12 @@ class App extends GetView<BottomNavController> {
                   label: 'home'
               ),
               BottomNavigationBarItem(
-                  icon: Container(
+                  icon: SizedBox(
                     width: 30,
                     height: 30,
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.grey
+                    child: CircleAvatar(
+                      backgroundImage: NetworkImage(AuthController.to.user.value.thumbnail!),
+                      backgroundColor: Colors.grey,
                     ),
                   ),
                   label: 'home'
