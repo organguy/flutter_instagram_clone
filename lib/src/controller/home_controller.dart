@@ -7,10 +7,7 @@ class HomeController extends GetxController with WidgetsBindingObserver{
 
   RxList<PostModel> posts = <PostModel>[].obs;
 
-  void _loadPostList() async{
-    var postList = await PostRepository.loadPostList();
-    posts(postList);
-  }
+  static HomeController get to => Get.find();
 
   @override
   void onInit() {
@@ -18,13 +15,8 @@ class HomeController extends GetxController with WidgetsBindingObserver{
     _loadPostList();
   }
 
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    if(state == AppLifecycleState.resumed){
-
-      debugPrint('resumed');
-
-      _loadPostList();
-    }
+  void _loadPostList() async{
+    var postList = await PostRepository.loadPostList();
+    posts(postList);
   }
 }

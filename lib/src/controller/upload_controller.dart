@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:instagram_clone/src/components/message_popup.dart';
 import 'package:instagram_clone/src/controller/auth_controller.dart';
+import 'package:instagram_clone/src/controller/home_controller.dart';
 import 'package:instagram_clone/src/models/post_model.dart';
 import 'package:instagram_clone/src/repository/post_repository.dart';
 import 'package:instagram_clone/src/screens/home_screen.dart';
@@ -15,7 +15,6 @@ import 'package:photo_manager/photo_manager.dart';
 import 'package:path/path.dart';
 import 'package:image/image.dart' as imageLib;
 import 'package:photofilters/photofilters.dart';
-import 'package:photofilters/widgets/photo_filter.dart';
 class UploadController extends GetxController{
 
   var albums = <AssetPathEntity>[];
@@ -146,7 +145,9 @@ class UploadController extends GetxController{
     showDialog(context: Get.context!, builder: (context) => MessagePopup(
         title: '포스트',
         message: '포스팅이 완료되었습니다.',
-        okCallback: (){
+        okCallback: () async{
+          var postList = await PostRepository.loadPostList();
+          HomeController.to.posts(postList);
           Get.offAll(const HomeScreen());
         }
       )
